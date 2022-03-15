@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en-150">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src=https://www.googletagmanager.com/gtag/js?id=UA-208998036-1></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-208998036-1');
+    </script>
+    <title>Wallet Tracker</title>
+    <meta name=”description” content="The Safemoon reflection calculator is a tool for you to uncover the possibilities of Safemoon">
+    <meta name="keywords" content="crypto,safemoon,safe,moon,investment,invest,tokenomics,token,coin">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/gif/png" href="images/logo.png">
+    <link rel="stylesheet" href="css/main.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+  </head>
+
+<body>
+  <header>
+    <div class="page">
+    <a href="index.html">
+        <img src="images/logo-black.png">
+    </a>
+</div>
+  </header>
+  <main class="main">
+    <div id='stars'></div>
+    <div id='stars2'></div>
+    <div id='stars3'></div>
+    <!-- <h1 class="page-header">
+    Safemoon Glubiz
+</h1> -->
+<div class="nav">
+    
+        <a href="Whales.html" class="nav-button">
+            <h3>
+                Whales
+            </h3>
+        </a>
+        <a href="Calculator.html" class="nav-button">
+            <h3>
+                Calculator
+            </h3>
+        </a>
+        <a href="Holders.html" class="nav-button">
+            <h3>
+                Holders
+            </h3>
+        </a>
+        <a href="Wallet.html" class="nav-button choosen">
+            <h3>
+                Wallet tracker
+            </h3>
+        </a>
+        
+            <a href="Login.html" class="nav-button hide-me">
+                <h3>
+                    Login
+                </h3>
+            </a>
+        
+    
+</div>
+    
+
+<section class="container">
+    <div class="walletInput">
+      <div class="rows">
+        <div class="input">
+          <h3>
+              Wallet address
+          </h3>
+          <div class="input_fields">
+
+            <input type="text" id="wallet" name="wallet" placeholder="0x0000000000000000000000000000000000000001" value="" spellcheck="false" pattern=".{40,50}">
+            
+            <input type="hidden" name="supplyHidden" id="supplyHidden" value="540244424215">
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2 class="clickable" id="runBSC" onclick="Wallet()">
+        Start
+    </h2>
+    <div class="container" id="trackerHidden" style="visibility: hidden">
+
+        <div class="output-tracker">
+          <table style="table-layout: fixed">
+            <tr style="border-bottom: none;">
+              <th colspan="2">
+                <h3>
+                  Loading transactions
+                </h3>
+              </th>
+            </tr>
+            <tr style="border-bottom: none;">
+              <th>
+                <p>
+                  V1
+                </p>
+              </th>
+              <td>
+                <p id="transactionStatus">
+                  0 / 0
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>
+                  V2
+                </p>
+              </th>
+              <td>
+                <p id="transactionStatus2">
+                  0 / 0
+                </p>
+              </td>
+            </tr>
+            <tr style="border-bottom: none;">
+              <th colspan="2">
+                <h3>
+                  Wallet stats * 
+                </h3>
+              </th>
+            </tr>
+            <tr style="border-bottom: none;">
+              <th>
+                <p>
+                  Spend
+                </p>
+              </th>
+              <td>
+                <p id="Spend">
+                  0.000
+                </p>
+              </td>
+            </tr>
+            <tr style="border-bottom: none;">
+              <th>
+                <p>
+                  avg price
+                </p>
+              </th>
+              <td>
+                <p id="avgPrice">
+                  0.000
+                </p>
+              </td>
+            </tr>
+            <tr style="border-bottom: none;">
+              <th>
+                <p>
+                  gains/losses
+                </p>
+              </th>
+              <td>
+                <p id="gains">
+                  0.000
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>
+                  Position
+                </p>
+              </th>
+              <td>
+                <p id="walletNumber">
+                  Fetching wallet position...
+                </p>
+              </td>
+            </tr>
+
+            <tr style="border-bottom: none;">
+              <th colspan="2">
+                <h3>
+                  Balance
+                </h3>
+              </th>
+            </tr>
+            <tr style="border-bottom: none;">
+              <td>
+                <p id="safemoonTrackerTotal">
+                  0.000
+                </p>
+              </td>
+              <td>
+                <p>
+                  Safemoon
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p id="trackerValue">
+                  0.000
+                </p>
+              </td>
+              <td>
+                <p>
+                  USD
+                </p>
+              </td>
+            </tr>
+
+            <tr style="border-bottom: none;">
+              <th colspan="2">
+                <h3>
+                  Total Reflections
+                </h3>
+              </th>
+            </tr>
+            <tr style="border-bottom: none;">
+              <td>
+                <p id="reflectionsTotal">
+                  0.000
+                </p>
+              </td>
+              <td>
+                <p>
+                  Safemoon
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p id="reflectionsTotalUSD">
+                  0.000
+                </p>
+              </td>
+              <td>
+                <p>
+                  USD
+                </p>
+              </td>
+            </tr>
+            
+            <tr style="border-bottom: none;">
+              <th colspan="2">
+                <h3>
+                  Market share
+                </h3>
+              </th>
+            </tr>
+            <tr style="border-bottom: none;">
+              <th>
+                <p>
+                  Total Supply
+                </p>
+              </th>
+              <td>
+                <p id="marketShareT">
+                  0.000
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>
+                  circulating Supply
+                </p>
+              </th>
+              <td>
+                <p id="marketShareA">
+                  0.000
+                </p>
+              </td>
+            </tr>
+          </table>
+
+          <input type="hidden" id="price" min="0" value="0.001039132">
+          <input type="hidden" id="supply" min="0" value="">
+        </div>
+        <p style="color:#ccc; text-align:center;">
+          Disclaimer: <br> <br> 
+          * The Wallet Stats and transactions below are calculated using a snapshot of the price of each day, days with big price movements can have varying accuracy.
+          <br><br>
+          ** The daily, weekly and monthly reflections are calculated using 60% of the total volume to imitate the volume on PancakeSwap. Since the volume on the different exchanges changes all the time, so does the accuracy of the calculations. 
+        </p>
+    </div>
+</section>
+<section class="transactions">
+  <table style="table-layout: fixed; visibility: hidden" id="walletBuys">
+    <thead>
+      <tr>
+        <th>
+          Incoming
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <table style="table-layout: fixed; visibility: hidden" id="walletSells">
+      <thead>
+        <tr>
+          <th>
+            Outgoing
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </section>
+    </section>
+  </main>
+  <footer>
+    <div class="footer">
+        <a href="https://www.safemoon.education/" class="clickable_hover_footer" target="_blank">
+            Education
+        </a>
+         | 
+        <a href="About.html" class="clickable_hover_footer">
+            About 
+        </a>
+        |
+        <a href="Status.html" class="clickable_hover_footer">
+            Status 
+        </a>
+    </div>
+</footer>
+<script src="js/legacy.js"></script>
+
+
+    <script src="js/wallet.js"></script>
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en-150">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src=https://www.googletagmanager.com/gtag/js?id=UA-208998036-1></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-208998036-1');
+    </script>
+    <title>Safemoon Calculator</title>
+    <meta name=”description” content="The Safemoon reflection calculator is a tool for you to uncover the possibilities of Safemoon">
+    <meta name="keywords" content="crypto,safemoon,safe,moon,investment,invest,tokenomics,token,coin">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/gif/png" href="images/logo.png">
+    <link rel="stylesheet" href="css/main.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+  </head>
+
+<body>
+  <header>
+    <div class="page">
+    <a href="index.html">
+        <img src="images/logo-black.png">
+    </a>
+</div>
+  </header>
+  <main class="main">
+    <div id='stars'></div>
+    <div id='stars2'></div>
+    <div id='stars3'></div>
+    <!-- <h1 class="page-header">
+    Safemoon Glubiz
+</h1> -->
+<div class="nav">
+    
+        <a href="Whales.html" class="nav-button hide-me">
+            <h3>
+                Whales
+            </h3>
+        </a>
+        <a href="Calculator.html" class="nav-button choosen">
+            <h3>
+                Calculator
+            </h3>
+        </a>
+        <a href="Holders.html" class="nav-button">
+            <h3>
+                Holders
+            </h3>
+        </a>
+        <a href="Wallet.html" class="nav-button hide-me">
+            <h3>
+                Wallet tracker
+            </h3>
+        </a>
+        
+            <a href="Login.html" class="nav-button hide-me">
+                <h3>
+                    Login
+                </h3>
+            </a>
+        
+    
+</div>
+    
+
+<section class="container">
+    <div class="rows">
+        <h2 class="clickable clickable_hover" id="ref-switch" onclick="changeToStateCal()" style="padding: .5rem">
+            Reflection calculator
+        </h2>
+        <h2 class="clickable clickable_hover" id="burn-switch" onclick="changeToStateCal()"style="padding: .5rem">
+            Burn calculator
+        </h2>
+    </div>
+    <div class="input">
+        <h3>
+            Wallet
+        </h3>
+        <p style="color:#ccc; font-size: 1rem;">Sign up to use this function</p>
+        <div class="input_fields">
+            <input type="text" id="wallet" name="wallet" value="" pattern=".{40,50}" readonly>
+        </div>
+    </div>
+    <div class="normalCalc">
+        <div class="rows">
+            <div class="input">
+                <h3>
+                    Balance
+                </h3>
+                <p style="color:#ccc; font-size: 1rem;">SFM V2</p>
+                <div class="input_fields">
+                    <!-- <input type="number" id="amount" min="0" value="1" required> -->
+                    <input type="number" id="amount" min="0" value="1" required>
+                    <select name="" id="amountState">
+                        <option value="1">Thousand</option>
+                        <option value="2" selected>Million</option>
+                        <option value="3">Billion</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input">
+                <h3>
+                    Supply
+                </h3>
+                <p style="color:#ccc; font-size: 1rem;">SFM V2</p>
+                <div class="input_fields">
+                    <input type="number" id="supply" min="0" value="459.756" required>
+                    <input type="hidden" name="supplyHidden" id="supplyHidden" value="540244424215">
+                    <select name="" id="supplyState">
+                        <option value="1">Thousand</option>
+                        <option value="2">Million</option>
+                        <option value="3" selected>Billion</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+        <div class="rows">
+            <div class="input">
+                <h3>
+                    Volume
+                </h3>
+                <p style="color:#ccc; font-size: 1rem;">USD</p>
+                <div class="input_fields">
+                    <input type="number" id="volume" value="0" min="0" required>
+                    <select name="" id="volumeState">
+                        <option value="1" selected>Million</option>
+                        <option value="2">Billion</option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="input">
+                <h3 >
+                    Price
+                </h3>
+                <p style="color:#ccc; font-size: 1rem;">USD</p>
+                <input type="number" id="price" step="0.00001" min="0" value="0.00104">
+            </div>
+            
+        </div>
+        <div class="rows">
+            <div class="input hideDaysBurn" style="display: block">
+                <h3 >
+                    Days
+                </h3>
+                <input type="number" id="daysReflections" step="1" min="1" min="1095" value="365">
+            </div>
+        </div>
+
+        <div class="rows">
+            <h2 class="clickable clickable_hover" id="toggleReset" onclick="toggleReset(459.756, 20.282, 0.00104)" style="padding: .5rem">
+                Reset
+            </h2>
+        </div>
+        <div class="rows">
+            <h2 class="clickable clickable_hover" id="toggleAdvancedOn" onclick="toggleAdvanced('Advanced')" style="padding: .5rem">
+                Show advanced
+            </h2>
+            <h2 class="clickable clickable_hover" id="toggleAdvancedOff" onclick="toggleAdvanced('basic')"style="padding: .5rem">
+                hide advanced
+            </h2>
+        </div>
+        <div class="advancedSettings">
+            <div class="rows">
+                <div class="input">
+                    <h3 >
+                        Distributed %
+                    </h3>
+                    <input type="number" id="distribution" step="0.01" min="0" value="4" onchange="calculateBurn(), calculateStatic(), offset()">
+                </div>
+                <div class="input">
+                    <h3 >
+                        Burned %
+                    </h3>
+                    <input type="number" id="burned" step="0.01" min="0" value="2" onchange="calculateBurnAmount()">
+                </div>
+            </div>
+            <div class="rows">
+                <div class="input">
+                    <h3>
+                        SWAP Volume
+                    </h3>
+                    <p style="color:#ccc; font-size: 1rem;">USD</p>
+                    <div class="input_fields">
+                        <input type="number" id="swapvolume" value="0" min="0" required>
+                        <select name="" id="swapvolumeState">
+                            <option value="1" selected>Million</option>
+                            <option value="2">Billion</option>
+                            <option value="3">Trillion</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="rows">
+                <div class="input">
+                    <h3>
+                        Incremental price change
+                    </h3>
+                    <p style="color:#ccc; font-size: 1rem;">% per day (max 1.5%)</p>
+                    <div class="input_fields">
+                        <input type="number" id="priceIncrement" step="0.001" value="0" min="0" max="2" onchange="calculateBurn(), calculateStatic(), calculateBurnAmount(), offset()">
+                    </div>
+                </div>
+            </div>
+            <div class="rows">
+                <h2 class="clickable clickable_hover" id="toggleBurnWalletOn" onclick="toggleBurnWallet('include')" style="padding: .5rem">
+                    Include all wallets
+                </h2>
+                <h2 class="clickable clickable_hover" id="toggleBurnWalletOff" onclick="toggleBurnWallet('exclude', 540244424215)"style="padding: .5rem">
+                    exclude exempted wallets
+                </h2>
+            </div>
+        </div>
+    </div>
+</section>
+    <div class="clickable switch_box">
+    <h3 class="choosen" id="burnCalculator" onclick="changeToState('burn')">
+        Burn phase
+    </h3>
+    <h3 id="staticCalculator" onclick="changeToState('static')">
+        Static phase
+    </h3>
+</div>
+    <section class="burnCalculator">
+  <h2 class="clickable no_hover">
+    Burns in safemoon
+  </h2>
+  <div class="container">
+    <div class="output">
+      <h3>
+        Daily Burn amount
+      </h3>
+      <p id="dailyburn">
+        dummy
+      </p>
+    </div>
+    <div class="output">
+      <h3>
+        Weekly burn amount
+      </h3>
+      <p id="weeklyburn">
+        dummy
+      </p>
+    </div>
+    <div class="output">
+      <h3>
+        monthly burn amount
+      </h3>
+      <p id="monthlyburn">
+        dummy
+      </p>
+    </div>
+    <div class="output">
+      <h3 class="inline">
+        Days till
+      </h3>
+      <input class="inline" type="number" name="burnAmount" id="burnAmount" value="50" max="NaN" min="0.01" onchange="calculateBurnAmount()">
+      <h3 class="inline">
+        billion
+      </h3>
+      <p id="daysleftv2">
+        dummy
+      </p>
+    </div>
+  </div>
+</section>
+    <section class="burn">
+  <div class="container">
+    <div class="output">
+      <h3>
+        Total Value usd
+      </h3>
+      <p id="totalValue">
+        dummy
+      </p>
+    </div>
+    <div class="output dailyReflectionsOutputBurn">
+      <p id="dailyReflectionsOutputBurnText">
+
+      </p>
+      <h3>
+        Daily reflections
+      </h3>
+      <div class="block">
+        <p id="dailyReflectionsBurn">
+
+        </p>
+      </div>
+      <div class="block">
+        <p id="dailySafemoonReflectionsBurn">
+
+        </p>
+      </div>
+      <div class="block">
+        <h4>
+          Price
+        </h4>
+        <p id="dailySafemoonReflectionsBurnPrice">
+
+        </p>
+      </div>
+    </div>
+    <div class="output weeklyReflectionsOutputBurn">
+      <p id="weeklyReflectionsOutputBurnText">
+
+      </p>
+      <h3>
+        Weekly reflections
+      </h3>
+      <div class="block">
+        <p id="weeklyReflectionsBurn">
+
+        </p>
+      </div>
+      <div class="block">
+        <p id="weeklySafemoonReflectionsBurn">
+
+        </p>
+      </div>
+      <div class="block">
+        <h4>
+          Price
+        </h4>
+        <p id="weeklySafemoonReflectionsBurnPrice">
+
+        </p>
+      </div>
+    </div>
+    <div class="output monthlyReflectionsOutputBurn">
+      <p id="monthlyReflectionsOutputBurnText">
+
+      </p>
+      <h3>
+        Monthly reflections
+      </h3>
+      <div class="block">
+        <p id="monthlyReflectionsBurn">
+
+        </p>
+      </div>
+      <div class="block">
+        <p id="monthlySafemoonReflectionsBurn">
+
+        </p>
+      </div>
+      <div class="block">
+        <h4>
+          Price
+        </h4>
+        <p id="monthlySafemoonReflectionsBurnPrice">
+
+        </p>
+      </div>
+    </div>
+    <div class="output customReflectionsOutputBurn">
+      <h3 id="customeReflectionsHeaderBurn">
+        Day reflections
+      </h3>
+      <div class="block">
+        <p id="customeReflectionsBurn">
+
+        </p>
+      </div>
+      <div class="block">
+        <p id="customeSafemoonReflectionsBurn">
+
+        </p>
+      </div>
+      <div class="block">
+        <h4>
+          Price
+        </h4>
+        <p id="customeSafemoonReflectionsBurnPrice">
+
+        </p>
+      </div>
+    </div>
+    <div class="output">
+      <h3>
+        Day till tax offset is earned in reflections
+      </h3>
+      <p id="offset">
+      </p>
+    </div>
+    <div id="Chart">
+      <canvas id="reflectionBurnChart"></canvas>
+    </div>
+    <p style="color: #ccc; margin-top: 2rem;">
+      Thresholds explained: <br>
+      Daily: <br>
+      Imminent = reflections under 2% of balance <br>
+      Likely = reflections between 2% and 7% of balance <br>
+      Unlikely = reflections above 7% of balance <br><br>
+      Weekly: <br>
+      Imminent = reflections under 18% of balance <br>
+      Likely = reflections between 18% and 40% of balance <br>
+      Unlikely = reflections above 40% of balance <br><br>
+      Monthly: <br>
+      Imminent = reflections under 80% of balance <br>
+      Likely = reflections between 80% and 140% of balance <br>
+      Unlikely = reflections above 140% of balance <br><br>
+    </p>
+  </div>
+</section>
+    
+    <section class="static">
+  <div class="container">
+    <div class="output">
+      <h3>
+        Total Value usd
+      </h3>
+      <p id="totalValueStatic">
+        dummy
+      </p>
+    </div>
+    <div class="output dailyReflectionsOutputStatic">
+      <p id="dailyReflectionsOutputStaticText">
+
+      </p>
+      <h3>
+        Daily reflections
+      </h3>
+      <div class="block">
+        <p id="dailyReflectionsStatic">
+
+        </p>
+      </div>
+      <div class="block">
+        <p id="dailySafemoonReflectionsStatic">
+
+        </p>
+      </div>
+      <div class="block">
+        <h4>
+          Price
+        </h4>
+        <p id="dailySafemoonReflectionsStaticPrice">
+
+        </p>
+      </div>
+    </div>
+    <div class="output weeklyReflectionsOutputStatic">
+      <p id="weeklyReflectionsOutputStaticText">
+
+      </p>
+      <h3>
+        Weekly reflections
+      </h3>
+      <div class="block">
+        <p id="weeklyReflectionsStatic">
+
+        </p>
+      </div>
+      <div class="block">
+        <p id="weeklySafemoonReflectionsStatic">
+
+        </p>
+      </div>
+      <div class="block">
+        <h4>
+          Price
+        </h4>
+        <p id="weeklySafemoonReflectionsStaticPrice">
+
+        </p>
+      </div>
+    </div>
+    <div class="output monthlyReflectionsOutputStatic">
+      <p id="monthlyReflectionsOutputStaticText">
+
+      </p>
+      <h3>
+        Monthly reflections
+      </h3>
+      <div class="block">
+        <p id="monthlyReflectionsStatic">
+
+        </p>
+      </div>
+      <div class="block">
+        <p id="monthlySafemoonReflectionsStatic">
+
+        </p>
+      </div>
+      <div class="block">
+        <h4>
+          Price
+        </h4>
+        <p id="monthlySafemoonReflectionsStaticPrice">
+
+        </p>
+      </div>
+    </div>
+    <div class="output customeReflectionsOutputStatic">
+      <h3 id="customeReflectionsHeaderStatic">
+        Days reflections
+      </h3>
+      <div class="block">
+        <p id="customeReflectionsStatic">
+
+        </p>
+      </div>
+      <div class="block">
+        <p id="customeSafemoonReflectionsStatic">
+
+        </p>
+      </div>
+      <div class="block">
+        <h4>
+          Price
+        </h4>
+        <p id="customeSafemoonReflectionsStaticPrice">
+
+        </p>
+      </div>
+    </div>
+    <div class="output">
+      <h3>
+        Day till tax offset is earned in reflections
+      </h3>
+      <p id="offsetStatic">
+      </p>
+    </div>
+    <div id="ChartStatic">
+      <canvas id="reflectionStaticChart"></canvas>
+    </div>
+    <p style="color: #ccc; margin-top: 2rem;">
+      Thresholds explained: <br>
+      Daily: <br>
+      Imminent = reflections under 10% of balance <br>
+      Likely = reflections between 10% and 25% of balance <br>
+      Unlikely = reflections above 25% of balance <br><br>
+      Weekly: <br>
+      Imminent = reflections under 70% of balance <br>
+      Likely = reflections between 70% and 200% of balance <br>
+      Unlikely = reflections above 200% of balance <br><br>
+      Monthly: <br>
+      Imminent = reflections under 300% of balance <br>
+      Likely = reflections between 300% and 800% of balance <br>
+      Unlikely = reflections above 800% of balance <br><br>
+    </p>
+  </div> 
+</section>
+  </main>
+  <footer>
+    <div class="footer">
+        <a href="https://www.safemoon.education/" class="clickable_hover_footer" target="_blank">
+            Education
+        </a>
+         | 
+        <a href="About.html" class="clickable_hover_footer">
+            About 
+        </a>
+        |
+        <a href="Status.html" class="clickable_hover_footer">
+            Status 
+        </a>
+    </div>
+</footer>
+<script src="js/legacy.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+
+
+
+
+</body>
+
+</html>
